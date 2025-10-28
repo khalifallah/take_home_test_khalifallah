@@ -12,59 +12,65 @@ export const SOURCE_DATA: [number, number][] = [
 ];
 
 export function useDominoes() {
-  // State untuk daftar domino yang sedang ditampilkan
   const [dominoes, setDominoes] = useState(SOURCE_DATA);
-
-  // State untuk input "Remove Number"
   const [removeNumber, setRemoveNumber] = useState("");
 
-  // --- Logika yang Sudah Jadi ---
-
-  // Hitung angka ganda (derived state)
   const doubleCount = dominoes.filter((d) => d[0] === d[1]).length;
 
-  // --- Logika Tombol (Placeholder) ---
-  // Kita akan isi ini nanti
-
   const sortAsc = () => {
-    console.log("Tombol Sort (ASC) diklik. Logika belum dibuat.");
-    // TODO: Implementasi logika sort ASC
+    console.log("Mengurutkan ASC...");
+    const sorted = [...dominoes].sort((a, b) => {
+      const totalA = a[0] + a[1];
+      const totalB = b[0] + b[1];
+
+      if (totalA !== totalB) {
+        return totalA - totalB;
+      }
+
+      return a[0] - b[0];
+    });
+    setDominoes(sorted);
   };
 
   const sortDesc = () => {
-    console.log("Tombol Sort (DESC) diklik. Logika belum dibuat.");
-    // TODO: Implementasi logika sort DESC
+    console.log("Mengurutkan DESC...");
+    const sorted = [...dominoes].sort((a, b) => {
+      const totalA = a[0] + a[1];
+      const totalB = b[0] + b[1];
+
+      if (totalA !== totalB) {
+        return totalB - totalA;
+      }
+
+      return b[0] - a[0];
+    });
+    setDominoes(sorted);
   };
 
   const flip = () => {
     console.log("Tombol Flip diklik. Logika belum dibuat.");
-    // TODO: Implementasi logika flip
   };
 
   const removeDup = () => {
     console.log("Tombol Remove Dup diklik. Logika belum dibuat.");
-    // TODO: Implementasi logika remove duplicates
   };
 
   const reset = () => {
     console.log("Tombol Reset diklik.");
-    setDominoes(SOURCE_DATA); // Logika reset bisa langsung diisi
+    setDominoes(SOURCE_DATA);
   };
 
   const removeByTotal = () => {
     console.log(`Tombol Remove ${removeNumber} diklik. Logika belum dibuat.`);
-    // TODO: Implementasi logika remove by total
   };
 
-  // Kembalikan semua yang dibutuhkan oleh UI
   return {
     dominoes,
     doubleCount,
     removeNumber,
     setRemoveNumber,
-    SOURCE_DATA, // Kita ekspor juga agar bisa ditampilkan di box "Source"
+    SOURCE_DATA,
 
-    // Fungsi-fungsi
     sortAsc,
     sortDesc,
     flip,
