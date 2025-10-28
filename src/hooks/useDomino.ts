@@ -70,12 +70,23 @@ export function useDominoes() {
   };
 
   const reset = () => {
-    console.log("Tombol Reset diklik.");
     setDominoes(SOURCE_DATA);
   };
 
   const removeByTotal = () => {
-    console.log(`Tombol Remove ${removeNumber} diklik. Logika belum dibuat.`);
+    const totalToRemove = parseInt(removeNumber, 10);
+
+    if (isNaN(totalToRemove)) {
+      console.log("Input tidak valid, tidak ada yang dihapus.");
+      return;
+    }
+
+    const filtered = dominoes.filter((d) => {
+      const total = d[0] + d[1];
+      return total !== totalToRemove;
+    });
+
+    setDominoes(filtered);
   };
 
   return {
