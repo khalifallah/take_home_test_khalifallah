@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css"; // Kita akan buat file CSS ini
+import { DominoCard } from "./components/domino.card";
+import { useDominoes } from "./hooks/useDomino";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Ambil semua state dan fungsi dari hook kita
+  const {
+    dominoes,
+    doubleCount,
+    removeNumber,
+    setRemoveNumber,
+    SOURCE_DATA,
+    sortAsc,
+    sortDesc,
+    flip,
+    removeDup,
+    reset,
+    removeByTotal,
+  } = useDominoes();
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app-container">
+      <h1>Dominoes</h1>
+
+      <div className="info-box">
+        <label>Source</label>
+        <pre>{JSON.stringify(SOURCE_DATA)}</pre>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+      <div className="info-box">
+        <label>Double Numbers</label>
+        <p>{doubleCount}</p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      <div className="domino-list">
+        {dominoes.map((domino, index) => (
+          <DominoCard
+            key={`${domino[0]}-${domino[1]}-${index}`}
+            numbers={domino}
+          />
+        ))}
+      </div>
+
+      <div className="controls">
+        <button onClick={sortAsc}>Sort (ASC)</button>
+        <button onClick={sortDesc}>Sort (DESC)</button>
+        <button onClick={flip}>Flip</button>
+        <button onClick={removeDup}>Remove Dup</button>
+        <button onClick={reset}>Reset</button>
+      </div>
+
+      <div className="remove-section">
+        <input
+          type="text"
+          value={removeNumber}
+          onChange={(e) => setRemoveNumber(e.target.value)}
+          placeholder="Input Number"
+        />
+        <button onClick={removeByTotal}>Remove</button>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

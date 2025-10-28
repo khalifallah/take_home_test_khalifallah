@@ -33,10 +33,88 @@
   }
 }
 
-.card {
-  padding: 2em;
+.info-box {
+  padding: 0.5em;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  transition: border-color 0.25s;
 }
 
 .read-the-docs {
   color: #888;
+}
+
+.info-box label {
+  font-weight: bold;
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.info-box pre,
+.info-box p {
+  margin: 0;
+  font-size: 1.1rem;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: monospace;
+
+  background-color: #f9f9f9;
+}
+
+.domino-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  min-height: 120px;
+  transition: border-color 0.25s;
+}
+
+.controls,
+.remove-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  color: #213547;
+}
+
+.btn-reset:hover {
+  border-color: #6c757d;
+}
+
+.btn-remove:hover {
+  border-color: #dc3545;
+}
+
+@media (prefers-color-scheme: dark) {
+  .info-box pre,
+  .info-box p {
+    background-color: #505050;
+  }
+
+  .domino-list {
+    border-color: #555;
+  }
+
+  input[type="number"] {
+    background-color: #1a1a1a;
+    border-color: #555;
+    color: rgba(255, 255, 255, 0.87);
+  }
 }

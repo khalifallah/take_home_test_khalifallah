@@ -1,26 +1,27 @@
 .domino-card {
-  /* Tampilan kotak */
-  border: 2px solid #333;
+  border: 2px solid #888;
   border-radius: 8px;
   width: 60px;
   height: 100px;
   padding: 8px;
-  box-sizing: border-box; /* Agar padding tidak menambah ukuran */
+  box-sizing: border-box;
 
-  /* Tata letak internal (angka atas, garis, angka bawah) */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 
-  background-color: white;
   font-family: Arial, sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
+  text-align: center;
+  transition: background-color 0.25s, border-color 0.25s;
+
+  background-color: #f9f9f9;
+  border-color: #bbb;
 }
 
 .domino-card .number {
-  /* Memastikan angka pas di areanya */
   flex: 1;
   display: flex;
   align-items: center;
@@ -28,8 +29,19 @@
 }
 
 .domino-card .divider {
-  /* Garis pemisah di tengah */
   height: 2px;
   width: 100%;
-  background-color: #333;
+  background-color: #bbb;
+  transition: background-color 0.25s;
+}
+
+@media (prefers-color-scheme: dark) {
+  .domino-card {
+    background-color: #1a1a1a;
+    border-color: #555;
+  }
+
+  .domino-card .divider {
+    background-color: #555;
+  }
 }

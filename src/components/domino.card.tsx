@@ -1,9 +1,8 @@
 import React from "react";
-import "./DominoCard.css";
+import "./domino.card.css";
 
-// Tentukan 'props' yang akan diterima komponen ini
 interface DominoCardProps {
-  numbers: [number, number]; // Menerima array berisi dua angka
+  numbers: [number, number];
 }
 
 export const DominoCard: React.FC<DominoCardProps> = ({ numbers }) => {
