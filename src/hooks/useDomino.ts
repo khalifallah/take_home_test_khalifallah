@@ -18,7 +18,6 @@ export function useDominoes() {
   const doubleCount = dominoes.filter((d) => d[0] === d[1]).length;
 
   const sortAsc = () => {
-    console.log("Mengurutkan ASC...");
     const sorted = [...dominoes].sort((a, b) => {
       const totalA = a[0] + a[1];
       const totalB = b[0] + b[1];
@@ -33,7 +32,6 @@ export function useDominoes() {
   };
 
   const sortDesc = () => {
-    console.log("Mengurutkan DESC...");
     const sorted = [...dominoes].sort((a, b) => {
       const totalA = a[0] + a[1];
       const totalB = b[0] + b[1];
@@ -48,11 +46,27 @@ export function useDominoes() {
   };
 
   const flip = () => {
-    console.log("Tombol Flip diklik. Logika belum dibuat.");
+    const flipped = dominoes.map((d) => [d[1], d[0]] as [number, number]);
+    setDominoes(flipped);
   };
 
   const removeDup = () => {
-    console.log("Tombol Remove Dup diklik. Logika belum dibuat.");
+    const normalize = (d: [number, number]) => {
+      return [Math.min(d[0], d[1]), Math.max(d[0], d[1])].join(",");
+    };
+
+    const counts = dominoes.reduce((acc, d) => {
+      const key = normalize(d);
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+
+    const filtered = dominoes.filter((d) => {
+      const key = normalize(d);
+      return counts[key] === 1;
+    });
+
+    setDominoes(filtered);
   };
 
   const reset = () => {
