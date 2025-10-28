@@ -1,73 +1,46 @@
-# React + TypeScript + Vite
+# Proyek Dominoes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sebuah aplikasi halaman tunggal (Single Page Application) sederhana untuk menampilkan dan memanipulasi satu set kartu domino. Proyek ini dibuat menggunakan **React** dan **Vite**.
 
-Currently, two official plugins are available:
+Proyek ini ditujukan untuk take home test JCWDAH-022 2025
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Fitur
 
-## React Compiler
+Aplikasi ini memiliki beberapa fitur fungsional:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Tampilan Dinamis:** Menampilkan semua kartu domino dari data sumber.
+- **Hitung Ganda:** Secara otomatis menghitung dan menampilkan jumlah kartu "ganda" (misal, `[1,1]`, `[3,3]`).
+- **Sort (ASC):** Mengurutkan kartu dari total terkecil ke terbesar. Jika total sama, diurutkan berdasarkan angka pertama yang terkecil.
+- **Sort (DESC):** Mengurutkan kartu dari total terbesar ke terkecil. Jika total sama, diurutkan berdasarkan angka pertama yang terbesar.
+- **Flip:** Membalik posisi angka pada semua kartu (misal, `[1,2]` menjadi `[2,1]`).
+- **Remove Dup:** Menghapus semua kartu yang dianggap duplikat (termasuk yang terbalik, misal `[1,2]` dan `[2,1]`). Hanya kartu yang benar-benar unik yang tersisa.
+- **Remove by Total:** Menghapus semua kartu yang total jumlahnya sama dengan angka yang diinput oleh pengguna.
+- **Validasi Input:** Memberikan pesan error jika input untuk "Remove" tidak valid (bukan angka).
+- **Reset:** Mengembalikan daftar kartu ke kondisi data awal.
 
-## Expanding the ESLint configuration
+## 🚀 Cara Menjalankan Proyek
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Untuk menjalankan proyek ini di mesin lokal Anda, ikuti langkah-langkah berikut:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1.  **Clone repositori ini:**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+    ```bash
+    git clone [URL-repositori-Anda-di-sini]
+    cd [nama-folder-proyek]
+    ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2.  **Install dependensi:**
+    (Pastikan Anda memiliki Node.js terinstal)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+    ```bash
+    npm install
+    ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3.  **Jalankan server pengembangan:**
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+    ```bash
+    npm run dev
+    ```
+
+4.  **Buka di browser:**
+    Buka `http://localhost:5173` (atau port lain yang muncul di terminal Anda) untuk melihat aplikasi.
