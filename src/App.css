@@ -35,9 +35,10 @@
 
 .info-box {
   padding: 0.5em;
-  border: 1px dashed #ccc;
+  border: 1px solid #ccc;
   border-radius: 8px;
   transition: border-color 0.25s;
+  margin-bottom: 14px;
 }
 
 .read-the-docs {
@@ -67,12 +68,11 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 10px;
+  margin-bottom: 14px;
+  padding: 14px;
   border: 1px dashed #ccc;
   border-radius: 8px;
-  min-height: 120px;
+  min-height: 100px;
   transition: border-color 0.25s;
 }
 

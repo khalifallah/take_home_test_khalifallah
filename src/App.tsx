@@ -1,9 +1,8 @@
-import "./App.css"; // Kita akan buat file CSS ini
+import "./App.css";
 import { DominoCard } from "./components/domino.card";
 import { useDominoes } from "./hooks/useDomino";
 
 function App() {
-  // Ambil semua state dan fungsi dari hook kita
   const {
     dominoes,
     doubleCount,
